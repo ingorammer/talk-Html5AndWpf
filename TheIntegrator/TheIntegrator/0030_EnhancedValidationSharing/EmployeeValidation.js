@@ -1,4 +1,6 @@
-﻿
+﻿// WARNING: Only proof of concept! Normally, this should be a nicer library, which doesn't expose everything to the global scope!
+
+
 function validateEmployee(jsonEmp) {
     var validationResult = {};
     var employee = JSON.parse(jsonEmp);
