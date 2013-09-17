@@ -1,0 +1,25 @@
+﻿<Window x:Class="TheIntegrator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="690" Width="521"
+        FontSize="16" >
+
+    <StackPanel Margin="28,37,23,24" Grid.RowSpan="1">
+        <Label Margin="0,0,0,10" Content="The Integrator" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" />
+
+        <Button Margin="10,30,10,10" Padding="1,5" Click="UsingJavaScriptButton_Click">Using JavaScript from C#</Button>
+        <Button Margin="10,0,10,10" Padding="1,5" Click="SharedValidation_Click">Sharing Validation between C# and JS</Button>
+        <Button Margin="10,0,10,10" Padding="1,5" Click="ExtendedValidation_Click">Extended Validation for C# and JS</Button>
+        <Button Margin="10,0,10,10" Padding="1,5">Browsercontrol for Simple Interactions</Button>
+        <Button Margin="10,0,10,10" Padding="1,5">Exchanging Data with Browser Control</Button>
+        <Button Margin="10,0,10,10" Padding="1,5">Embedding Chrome with CefSharp</Button>
+        <Button Margin="10,0,10,10" Padding="1,5">Exchanging Data with CefSharp</Button>
+        <Button Margin="10,0,10,10" Padding="1,5">Awesomium - Commercial WebKit Embedding</Button>
+        <Button Margin="10,0,10,10" Padding="1,5">Complex UI with AngularJS</Button>
+
+        <TextBlock  Margin="0,30,0,10" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Text="Demos for Integrating JavaScript and HTML5-Techniques with WPF and WinForms Applications" VerticalAlignment="Top"/>
+        <TextBlock  Margin="0,0,0,10" HorizontalAlignment="Center"  TextAlignment="Center" TextWrapping="Wrap" Text="Demo code, not production code!" VerticalAlignment="Top" />
+        <TextBlock  Margin="0,0,0,10" HorizontalAlignment="Center"  TextAlignment="Center" TextWrapping="Wrap" Text="Contact: ingo.rammer@thinktecture.com, @ingorammer" VerticalAlignment="Top" />
+    </StackPanel>
+
+</Window>
