@@ -34,12 +34,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="RemObjects.Script, Version=2.0.69.1081, Culture=neutral, PublicKeyToken=3df3cad1b7aa5098, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Program Files (x86)\RemObjects Software\Script for .NET\Bin\RemObjects.Script.dll</HintPath>
+      <HintPath>Lib\RemObjects.Script.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -117,7 +118,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -133,6 +133,9 @@
   <ItemGroup>
     <EmbeddedResource Include="0030_EnhancedValidationSharing\EmployeeValidation.js" />
     <EmbeddedResource Include="JsLib\json2.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Lib\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
