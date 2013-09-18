@@ -1,7 +1,7 @@
 ﻿<Window x:Class="TheIntegrator.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="690" Width="521"
+        Title="MainWindow" Height="754" Width="518"
         FontSize="16" >
 
     <StackPanel Margin="28,37,23,24" Grid.RowSpan="1">
@@ -10,6 +10,7 @@
         <Button Margin="10,30,10,10" Padding="1,5" Click="UsingJavaScriptButton_Click">Using JavaScript from C#</Button>
         <Button Margin="10,0,10,10" Padding="1,5" Click="SharedValidation_Click">Sharing Validation between C# and JS</Button>
         <Button Margin="10,0,10,10" Padding="1,5" Click="ExtendedValidation_Click">Extended Validation for C# and JS</Button>
+        <Button Margin="10,0,10,10" Padding="1,5" Click="CallbackIntoDotNet_Click">Callbacks into .NET</Button>
         <Button Margin="10,0,10,10" Padding="1,5">Browsercontrol for Simple Interactions</Button>
         <Button Margin="10,0,10,10" Padding="1,5">Exchanging Data with Browser Control</Button>
         <Button Margin="10,0,10,10" Padding="1,5">Embedding Chrome with CefSharp</Button>

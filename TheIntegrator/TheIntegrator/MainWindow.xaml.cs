@@ -44,5 +44,11 @@ namespace TheIntegrator
             
         }
 
+        private void CallbackIntoDotNet_Click(object sender, RoutedEventArgs e)
+        {
+            CallbacksIntoDotNetWindow window = new CallbacksIntoDotNetWindow();
+            window.Show();
+        }
+
     }
 }

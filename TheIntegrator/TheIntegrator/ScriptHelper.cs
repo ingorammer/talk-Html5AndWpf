@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using RemObjects.Script.EcmaScript;
 
 namespace TheIntegrator
 {
@@ -42,6 +44,26 @@ namespace TheIntegrator
             }
 
             return bld.ToString();
+        }
+
+        public static Dictionary<string, string> ConvertToStringArray(EcmaScriptObject res)
+        {
+            Dictionary<string, string> dict = new Dictionary<string, string>();
+            foreach (var name in res.Names)
+            {
+                var val = res.Values[name].Value;
+                if (val != null)
+                {
+                    dict.Add(name, val.ToString());
+                }
+            }
+
+            return dict;
+        }
+
+        public static Dictionary<string, string> ConvertToStringArray(string res)
+        {
+            return JsonConvert.DeserializeObject<Dictionary<string, string>>(res);
         }
     }
 }

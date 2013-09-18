@@ -14,18 +14,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Newtonsoft.Json;
 using RemObjects.Script;
-using TheIntegrator._0030_EnhancedValidationSharing;
+using TheIntegrator._0040_CallbacksIntoDotNet;
 
 namespace TheIntegrator
 {
-    public partial class EnhancedSharedValidationWindow : Window
+    public partial class CallbacksIntoDotNetWindow : Window
     {
         private Employee _emp;
 
-        public EnhancedSharedValidationWindow()
+        public CallbacksIntoDotNetWindow()
         {
             InitializeComponent();
-
 
             _emp = GetEmployee();
             this.DataContext = _emp;
@@ -38,6 +37,10 @@ namespace TheIntegrator
             emp.Salary = 12345;
             emp.Email = "markus.mustermann@example.com";
             return emp;
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
         }
 
     }

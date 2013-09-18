@@ -4,36 +4,32 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
-using Microsoft.ClearScript.V8;
 using Newtonsoft.Json;
+using RemObjects.Script;
 using TheIntegrator.Annotations;
 
-namespace TheIntegrator._0030_EnhancedValidationSharing
+namespace TheIntegrator._0040_CallbacksIntoDotNet
 {
     public class BaseEntity : INotifyPropertyChanged, IDataErrorInfo, INotifyDataErrorInfo
     {
         [ThreadStatic]
-        private volatile static V8ScriptEngine _engine;
-
-        [ThreadStatic]
-        private static string _scriptSource;
-
+        private volatile static ScriptComponent _scriptComponent;
         private static object _initLock = new object();
 
         private Dictionary<string, string> _errors = new Dictionary<string, string>();
 
         public static void EnsureScriptComponent()
         {
-            if (_engine == null)
+            if (_scriptComponent == null)
             {
                 lock (_initLock)
                 {
-                    if (_engine == null)
+                    if (_scriptComponent == null)
                     {
-                        var engine = new V8ScriptEngine();
-                        _scriptSource = ScriptHelper.GetCode(false, "_0030_EnhancedValidationSharing.EmployeeValidation.js");
-                        engine.Execute(_scriptSource);
-                        _engine = engine;
+                        var scr = new EcmaScriptComponent();
+                        scr.Source = ScriptHelper.GetCode(true, "_0040_CallbacksIntoDotNet.Employee.js");
+                        scr.Run();
+                        _scriptComponent = scr;
                     }
                 }
             }
@@ -67,15 +63,15 @@ namespace TheIntegrator._0030_EnhancedValidationSharing
         private void RefreshJavaScriptValidation()
         {
             EnsureScriptComponent();
-            var functionName = "validators." + this.GetType().Name;
+            var functionName = "validate" + this.GetType().Name;
             var jsonData = JsonConvert.SerializeObject(this);
 
-            var res = _engine.ExecuteCommand(functionName + "('" + jsonData + "')");
-
+            var res = (string)_scriptComponent.RunFunction(functionName, jsonData);
             var oldErrors = _errors;
-            _errors = ScriptHelper.ConvertToStringArray(res);
+            _errors = JsonConvert.DeserializeObject<Dictionary<string, string>>(res);
 
             RaiseErrorChangedForAll(oldErrors);
+
         }
 
         private void RaiseErrorChangedForAll(Dictionary<string, string> oldErrors)
