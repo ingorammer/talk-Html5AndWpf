@@ -25,23 +25,45 @@ namespace TheIntegrator
         public CallbacksIntoDotNetWindow()
         {
             InitializeComponent();
-
-            _emp = GetEmployee();
-            this.DataContext = _emp;
+            try
+            {
+                LoadData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
 
-        private Employee GetEmployee()
+        private async void LoadData()
         {
-            var emp = new Employee();
-            emp.Name = "Markus Mustermann";
-            emp.Salary = 12345;
-            emp.Email = "markus.mustermann@example.com";
-            return emp;
+            _emp = await GetEmployee();
+            DataContext = _emp;
         }
 
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        private async void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                _emp = await StoreEmployee(_emp);
+                DataContext = _emp;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
 
+        // ==== Actual implementations without the necessary errorhandlers below
+
+        private async Task<Employee> GetEmployee()
+        {
+            return await ScriptEngineWrapper.ExecuteAsyncCommand<Employee>("dataAccess.Employee.get", new { id = 123 });
+        }
+
+        private async Task<Employee> StoreEmployee(Employee emp)
+        {
+            return await ScriptEngineWrapper.ExecuteAsyncCommand<Employee>("dataAccess.Employee.store", emp);
+        }
     }
 }

@@ -68,9 +68,13 @@ namespace TheIntegrator._0030_EnhancedValidationSharing
         {
             EnsureScriptComponent();
             var functionName = "validators." + this.GetType().Name;
-            var jsonData = JsonConvert.SerializeObject(this);
 
-            var res = _engine.ExecuteCommand(functionName + "('" + jsonData + "')");
+            JsonSerializerSettings settings = new JsonSerializerSettings();
+            settings.DateFormatHandling = DateFormatHandling.MicrosoftDateFormat;
+
+            var jsonData = JsonConvert.SerializeObject(this, settings);
+
+            var res = _engine.ExecuteCommand(functionName + "(" + jsonData + ")");
 
             var oldErrors = _errors;
             _errors = ScriptHelper.ConvertToStringArray(res);
@@ -95,7 +99,6 @@ namespace TheIntegrator._0030_EnhancedValidationSharing
                     {
                         // if it has changed, notify!
                         handler(this, new DataErrorsChangedEventArgs(err.Key));
-
                     }
                 }
                 else

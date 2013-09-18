@@ -4,36 +4,15 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using Microsoft.ClearScript.V8;
 using Newtonsoft.Json;
-using RemObjects.Script;
 using TheIntegrator.Annotations;
 
 namespace TheIntegrator._0040_CallbacksIntoDotNet
 {
     public class BaseEntity : INotifyPropertyChanged, IDataErrorInfo, INotifyDataErrorInfo
     {
-        [ThreadStatic]
-        private volatile static ScriptComponent _scriptComponent;
-        private static object _initLock = new object();
-
         private Dictionary<string, string> _errors = new Dictionary<string, string>();
-
-        public static void EnsureScriptComponent()
-        {
-            if (_scriptComponent == null)
-            {
-                lock (_initLock)
-                {
-                    if (_scriptComponent == null)
-                    {
-                        var scr = new EcmaScriptComponent();
-                        scr.Source = ScriptHelper.GetCode(true, "_0040_CallbacksIntoDotNet.Employee.js");
-                        scr.Run();
-                        _scriptComponent = scr;
-                    }
-                }
-            }
-        }
 
         public IEnumerable GetErrors(string propertyName)
         {
@@ -62,16 +41,16 @@ namespace TheIntegrator._0040_CallbacksIntoDotNet
 
         private void RefreshJavaScriptValidation()
         {
-            EnsureScriptComponent();
-            var functionName = "validate" + this.GetType().Name;
-            var jsonData = JsonConvert.SerializeObject(this);
+            ScriptEngineWrapper.EnsureScriptComponent();
+            var functionName = "validators." + this.GetType().Name;
 
-            var res = (string)_scriptComponent.RunFunction(functionName, jsonData);
+
+            var res = ScriptEngineWrapper.ExecuteCommand(functionName, this);
+
             var oldErrors = _errors;
-            _errors = JsonConvert.DeserializeObject<Dictionary<string, string>>(res);
+            _errors = ScriptHelper.ConvertToStringArray(res);
 
             RaiseErrorChangedForAll(oldErrors);
-
         }
 
         private void RaiseErrorChangedForAll(Dictionary<string, string> oldErrors)
@@ -91,7 +70,6 @@ namespace TheIntegrator._0040_CallbacksIntoDotNet
                     {
                         // if it has changed, notify!
                         handler(this, new DataErrorsChangedEventArgs(err.Key));
-
                     }
                 }
                 else

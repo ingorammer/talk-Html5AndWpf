@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheIntegrator", "TheIntegrator\TheIntegrator.csproj", "{30BEFAF7-1460-4B9E-8369-3A355C655D7B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheIntegrator.Services", "TheIntegrator.Services\TheIntegrator.Services.csproj", "{D94E87CB-2668-4CC6-9A1F-0224B3D0D31F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{30BEFAF7-1460-4B9E-8369-3A355C655D7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30BEFAF7-1460-4B9E-8369-3A355C655D7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30BEFAF7-1460-4B9E-8369-3A355C655D7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D94E87CB-2668-4CC6-9A1F-0224B3D0D31F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D94E87CB-2668-4CC6-9A1F-0224B3D0D31F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D94E87CB-2668-4CC6-9A1F-0224B3D0D31F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D94E87CB-2668-4CC6-9A1F-0224B3D0D31F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
