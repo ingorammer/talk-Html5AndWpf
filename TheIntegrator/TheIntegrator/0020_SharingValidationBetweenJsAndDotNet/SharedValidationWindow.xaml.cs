@@ -27,7 +27,7 @@ namespace TheIntegrator
         {
             InitializeComponent();
 
-            _scriptComponent.Source = ScriptHelper.ReadRessource("_0020_SharingValidationBetweenJsAndDotNet.EmployeeValidation.js");
+            _scriptComponent.Source = ScriptHelper.ReadResource("_0020_SharingValidationBetweenJsAndDotNet.EmployeeValidation.js");
             _scriptComponent.Run();
 
             _emp = GetEmployee();

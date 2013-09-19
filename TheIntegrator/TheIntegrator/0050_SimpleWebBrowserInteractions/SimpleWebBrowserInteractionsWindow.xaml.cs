@@ -84,7 +84,7 @@ namespace TheIntegrator
 
         private static string GetHtmlContent(bool includeStyles)
         {
-            var html = ScriptHelper.ReadRessource("_0050_SimpleWebBrowserInteractions.AdditionalData.html");
+            var html = ScriptHelper.ReadResource("_0050_SimpleWebBrowserInteractions.AdditionalData.html");
             html += "<script type='text/javascript'>" + ScriptHelper.GetCode(true, "JsLib.jquery.js") +
                     "</script>";
             html += "<script>" + ScriptHelper.GetCode(false, "_0050_SimpleWebBrowserInteractions.AdditionalData.js") +

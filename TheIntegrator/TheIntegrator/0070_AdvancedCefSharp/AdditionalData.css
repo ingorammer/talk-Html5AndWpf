@@ -1,0 +1,48 @@
+﻿  html {
+        overflow: hidden;
+    }
+
+    body {
+        background-color: #E5E5E5;
+        overflow: hidden;
+        font-family: "Segoe UI";
+        font-size: 16px;
+    }
+
+    table {
+        border-collapse: collapse;
+    }
+
+    td {
+        padding-top: 8px;
+        padding-bottom: 12px;
+    }
+
+        td.label {
+            width: 144px;
+            vertical-align: middle;
+        }
+
+            td.label div {
+                padding-bottom: 2px;
+                padding-left: 4px;
+            }
+
+    input {
+        font-family: "Segoe UI";
+        font-size: 16px;
+        border: #ABADB3 solid 1px;
+        height: 24px;
+        padding-left: 2px;
+        padding-bottom: 1px;
+    }
+
+        input:hover {
+            border: #7eb4ea solid 1px;
+        }
+
+        input[type=text]::-ms-clear {
+            /* display: none;*/
+            width: 0;
+            height: 0;
+        }

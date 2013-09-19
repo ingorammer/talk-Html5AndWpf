@@ -13,6 +13,7 @@
         <Button Margin="10,0,10,10" Padding="1,5" Click="CallbackIntoDotNet_Click">Callbacks into .NET</Button>
         <Button Margin="10,0,10,10" Padding="1,5" Click="SimpleWebBrowserInteractions_Click">Simple Web Browser Interactions</Button>
         <Button Margin="10,0,10,10" Padding="1,5" Click="EmbeddingChromiumButton_Click">Embedding Chromium with CefSharp</Button>
+        <Button Margin="10,0,10,10" Padding="1,5" Click="AdvancedCefSharpButton_Click">Advanced CefSharp</Button>
         <Button Margin="10,0,10,10" Padding="1,5">Awesomium - Commercial WebKit Embedding</Button>
         <Button Margin="10,0,10,10" Padding="1,5">Complex UI with AngularJS, Dev Process, Reuse</Button>
 

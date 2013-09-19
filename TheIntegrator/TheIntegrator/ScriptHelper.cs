@@ -13,7 +13,7 @@ namespace TheIntegrator
     {
         private static string[] _libs = { "json2.js" };
 
-        public static string ReadRessource(string name)
+        public static string ReadResource(string name)
         {
             using (var stream = typeof(ScriptHelper).Assembly.GetManifestResourceStream("TheIntegrator." + name))
             {
@@ -33,14 +33,14 @@ namespace TheIntegrator
             {
                 foreach (var lib in _libs)
                 {
-                    bld.AppendLine(ReadRessource("JsLib." + lib));
+                    bld.AppendLine(ReadResource("JsLib." + lib));
                     bld.Append(";");
                 }
             }
 
             foreach (var name in resourceNames)
             {
-                bld.Append(ReadRessource(name));
+                bld.Append(ReadResource(name));
             }
 
             return bld.ToString();

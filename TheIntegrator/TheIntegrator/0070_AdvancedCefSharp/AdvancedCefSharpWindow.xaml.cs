@@ -19,19 +19,24 @@ using TheIntegrator._0060_IntegratingCefSharp;
 
 namespace TheIntegrator
 {
-    public partial class IntegratingCefSharpWindow
+    public partial class AdvancedCefSharpWindow
     {
+
+
         private Employee _emp;
         private List<Action> _queuedInteractions = new List<Action>();
 
         private WebView _webView;
         private bool _loaded = false;
 
-        public IntegratingCefSharpWindow()
+        public AdvancedCefSharpWindow()
         {
             InitializeComponent();
 
             _webView = new WebView();
+
+            _webView.RequestHandler = new AdvancedCefSharpRequestHandler();
+
             _webView.LoadCompleted += webView_LoadCompleted;
             webPlaceholder.Children.Add(_webView);
 
@@ -76,7 +81,7 @@ namespace TheIntegrator
         {
             if (_queuedInteractions != null)
             {
-                _queuedInteractions.Add(() => _webView.ExecuteScript( scriptName + " ('" + parameter + "')"));
+                _queuedInteractions.Add(() => _webView.ExecuteScript(scriptName + " ('" + parameter + "')"));
             }
             else
             {
@@ -87,23 +92,17 @@ namespace TheIntegrator
         private void DisplayHtml(Boolean includeStyles)
         {
             if (_queuedInteractions == null) _queuedInteractions = new List<Action>();
-            _webView.LoadHtml(GetHtmlContent(includeStyles));
+            _webView.LoadHtml(GetHtmlContent());
             ShowData(_emp);
         }
 
 
-        private static string GetHtmlContent(bool includeStyles)
+        private static string GetHtmlContent()
         {
-            var html = ScriptHelper.ReadResource("_0060_IntegratingCefSharp.AdditionalData.html");
-            html += "<script type='text/javascript'>" + ScriptHelper.GetCode(false, "JsLib.jquery.js") +
-                    "</script>";
-            html += "<script>" + ScriptHelper.GetCode(false, "_0060_IntegratingCefSharp.AdditionalData.js") +
-                    "</script type='text/javascript'>";
-            if (includeStyles)
-            {
-                html += "<style>" + ScriptHelper.GetCode(false, "_0060_IntegratingCefSharp.AdditionalData.css") +
-                        "</style>";
-            }
+            var html = ScriptHelper.ReadResource("_0070_AdvancedCefSharp.AdditionalData.html");
+            html += "<script type='text/javascript' src='res://JsLib/jquery.js'></script>";
+            html += "<script type='text/javascript' src='res://_0070_AdvancedCefSharp/AdditionalData.js'></script>";
+            html += "<link rel='stylesheet' href='res://_0070_AdvancedCefSharp/AdditionalData.css'></link>";
             return html;
         }
 
@@ -122,6 +121,11 @@ namespace TheIntegrator
         {
             var resp = (string)_webView.EvaluateScript("getData()");
             _emp.AdditionalInformation = resp;
+        }
+
+        private void ShowDevTools_Click(object sender, RoutedEventArgs e)
+        {
+            _webView.ShowDevTools();
         }
 
     }

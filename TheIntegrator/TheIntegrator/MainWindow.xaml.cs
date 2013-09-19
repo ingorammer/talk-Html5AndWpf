@@ -25,16 +25,22 @@ namespace TheIntegrator
         {
             InitializeComponent();
 
+            /*
+             
+             * If DevTools are not required, this can be configured
+             */
+
+            
             var settings = new CefSharp.Settings
             {
-                PackLoadingDisabled = true,
+                PackLoadingDisabled = false,
             };
+            
 
             if (!CEF.Initialize(settings))
             {
                 MessageBox.Show("Could not initialize CEF");
             }
-
         }
 
         private void UsingJavaScriptButton_Click(object sender, RoutedEventArgs e)
@@ -71,6 +77,12 @@ namespace TheIntegrator
         private void EmbeddingChromiumButton_Click(object sender, RoutedEventArgs e)
         {
             IntegratingCefSharpWindow window = new IntegratingCefSharpWindow();
+            window.Show();
+        }
+
+        private void AdvancedCefSharpButton_Click(object sender, RoutedEventArgs e)
+        {
+            AdvancedCefSharpWindow window = new AdvancedCefSharpWindow();
             window.Show();
         }
 
