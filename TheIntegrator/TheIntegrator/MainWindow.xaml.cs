@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CefSharp;
 
 namespace TheIntegrator
 {
@@ -23,6 +24,17 @@ namespace TheIntegrator
         public MainWindow()
         {
             InitializeComponent();
+
+            var settings = new CefSharp.Settings
+            {
+                PackLoadingDisabled = true,
+            };
+
+            if (!CEF.Initialize(settings))
+            {
+                MessageBox.Show("Could not initialize CEF");
+            }
+
         }
 
         private void UsingJavaScriptButton_Click(object sender, RoutedEventArgs e)
@@ -53,6 +65,12 @@ namespace TheIntegrator
         private void SimpleWebBrowserInteractions_Click(object sender, RoutedEventArgs e)
         {
             SimpleWebBrowserInteractionsWindow window = new SimpleWebBrowserInteractionsWindow();
+            window.Show();
+        }
+
+        private void EmbeddingChromiumButton_Click(object sender, RoutedEventArgs e)
+        {
+            IntegratingCefSharpWindow window = new IntegratingCefSharpWindow();
             window.Show();
         }
 

@@ -12,11 +12,9 @@
         <Button Margin="10,0,10,10" Padding="1,5" Click="ExtendedValidation_Click">Extended Validation for C# and JS</Button>
         <Button Margin="10,0,10,10" Padding="1,5" Click="CallbackIntoDotNet_Click">Callbacks into .NET</Button>
         <Button Margin="10,0,10,10" Padding="1,5" Click="SimpleWebBrowserInteractions_Click">Simple Web Browser Interactions</Button>
-        <Button Margin="10,0,10,10" Padding="1,5">Exchanging Data with Browser Control</Button>
-        <Button Margin="10,0,10,10" Padding="1,5">Embedding Chrome with CefSharp</Button>
-        <Button Margin="10,0,10,10" Padding="1,5">Exchanging Data with CefSharp</Button>
+        <Button Margin="10,0,10,10" Padding="1,5" Click="EmbeddingChromiumButton_Click">Embedding Chromium with CefSharp</Button>
         <Button Margin="10,0,10,10" Padding="1,5">Awesomium - Commercial WebKit Embedding</Button>
-        <Button Margin="10,0,10,10" Padding="1,5">Complex UI with AngularJS</Button>
+        <Button Margin="10,0,10,10" Padding="1,5">Complex UI with AngularJS, Dev Process, Reuse</Button>
 
         <TextBlock  Margin="0,30,0,10" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Text="Demos for Integrating JavaScript and HTML5-Techniques with WPF and WinForms Applications" VerticalAlignment="Top"/>
         <TextBlock  Margin="0,0,0,10" HorizontalAlignment="Center"  TextAlignment="Center" TextWrapping="Wrap" Text="Demo code, not production code!" VerticalAlignment="Top" />
