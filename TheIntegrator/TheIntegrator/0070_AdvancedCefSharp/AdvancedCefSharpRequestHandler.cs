@@ -18,7 +18,6 @@ namespace TheIntegrator
 
             if (!request.Url.StartsWith("res://"))
                 return false;
-            
 
             string resourceName = request.Url.Substring(6).Replace("/", ".");
 
