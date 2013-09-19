@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -57,7 +58,9 @@ namespace TheIntegrator._0040_CallbacksIntoDotNet
 
                 if (data != null)
                 {
-                    content = new ByteArrayContent(System.Text.Encoding.UTF8.GetBytes(data));
+                    content = new StringContent(data, Encoding.UTF8, "application/json");
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 }
 
                 HttpResponseMessage response;
@@ -80,7 +83,6 @@ namespace TheIntegrator._0040_CallbacksIntoDotNet
                         InvokeCallback(callbackId, false, "Invalid method '" + method + "'");
                         return;
                 }
-
 
                 if (response.IsSuccessStatusCode)
                 {

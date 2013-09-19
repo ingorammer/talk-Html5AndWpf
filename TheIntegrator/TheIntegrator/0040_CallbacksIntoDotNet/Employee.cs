@@ -13,6 +13,18 @@ namespace TheIntegrator._0040_CallbacksIntoDotNet
         private DateTime? _leaveDate;
         private decimal _salary;
         private string _name;
+        private int _id;
+
+        public int Id
+        {
+            get { return _id; }
+            set
+            {
+                if (value == _id) return;
+                _id = value;
+                OnPropertyChanged();
+            }
+        }
 
         public string Name
         {

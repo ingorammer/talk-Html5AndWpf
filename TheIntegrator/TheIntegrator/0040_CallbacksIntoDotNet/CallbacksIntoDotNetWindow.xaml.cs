@@ -37,19 +37,31 @@ namespace TheIntegrator
 
         private async void LoadData()
         {
-            _emp = await GetEmployee();
-            DataContext = _emp;
+            try
+            {
+                this.Cursor = Cursors.Wait;
+                _emp = await GetEmployee();
+                DataContext = _emp;
+            }
+            finally
+            {
+                this.Cursor = Cursors.Arrow;
+            }
         }
 
         private async void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+                this.Cursor = Cursors.Wait;
                 _emp = await StoreEmployee(_emp);
                 DataContext = _emp;
+                this.Cursor = Cursors.Arrow;
+                this.Close();
             }
             catch (Exception ex)
             {
+                this.Cursor = Cursors.Arrow;
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
@@ -58,7 +70,7 @@ namespace TheIntegrator
 
         private async Task<Employee> GetEmployee()
         {
-            return await ScriptEngineWrapper.ExecuteAsyncCommand<Employee>("dataAccess.Employee.get", new { id = 123 });
+            return await ScriptEngineWrapper.ExecuteAsyncCommand<Employee>("dataAccess.Employee.get", new { Id = 101 });
         }
 
         private async Task<Employee> StoreEmployee(Employee emp)

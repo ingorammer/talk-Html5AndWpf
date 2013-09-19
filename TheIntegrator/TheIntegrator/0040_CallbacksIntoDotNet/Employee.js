@@ -2,7 +2,7 @@
 var dataAccess = {};
 
 (function () {
-    
+
 
     function validateEmployee(employee) {
         var validationResult = {};
@@ -18,8 +18,6 @@ var dataAccess = {};
 
         return validationResult;
     }
-    
-
 
 
     // ==== public API below
@@ -27,7 +25,7 @@ var dataAccess = {};
     validators.Employee = function (employee) {
         return JSON.stringify(validateEmployee(employee));
     };
-    
+
 
     dataAccess.Employee = {
         store: function (employee, success, failure) {
@@ -39,24 +37,17 @@ var dataAccess = {};
                 return;
             }
 
-            platformAbstraction.sendPostRequest("/data/storeEmployee", employee, success, failure);
+            if (employee.Id) {
+                platformAbstraction.sendPostRequest("/api/Employee/" + employee.Id, employee, success, failure);
+            } else {
+                platformAbstraction.sendPutRequest("/api/Employee", employee, success, failure);
+            }
         },
         get: function (parameters, success, failure) {
-            // this method simulates an async server-request
-            window.setTimeout(function () {
-                try {
-                    var emp = {};
-                    emp.Name = "Markus Mustermann";
-                    emp.Salary = 12345;
-                    emp.Email = "markus.mustermann@example.com";
-                    success(emp);
-                } catch (err) {
-                    failure(err);
-                }
-            }, 250);
+            platformAbstraction.sendGetRequest("/api/Employee/" + parameters.Id, success, failure);
         }
     };
-    
+
 
 
 
@@ -70,7 +61,7 @@ var dataAccess = {};
     function getFirstValidationError(validationResult) {
         for (var key in validationResult) {
             if (validationResult.hasOwnProperty(key)) {
-                return key + ": " + validationResult[key] + "--- VR: " + JSON.stringify(validationResult);
+                return key + ": " + validationResult[key];
             }
         }
         return false;

@@ -25,6 +25,7 @@ namespace TheIntegrator._0040_CallbacksIntoDotNet
             return new string[0];
         }
 
+        [JsonIgnore]
         public bool HasErrors { get; private set; }
 
         public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
@@ -105,6 +106,7 @@ namespace TheIntegrator._0040_CallbacksIntoDotNet
             }
         }
 
+        [JsonIgnore]
         public string Error { get; private set; }
     }
 }

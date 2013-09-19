@@ -10,6 +10,11 @@ namespace TheIntegrator._0040_CallbacksIntoDotNet
 {
     public class EngineNativeWrapper
     {
+        public class ResponseHolder
+        {
+            public string Data;
+        }
+
         internal V8ScriptEngine Engine;
         internal NativeFunctions Native;
         internal string ScriptSource;
@@ -30,8 +35,8 @@ namespace TheIntegrator._0040_CallbacksIntoDotNet
             var callbackId = Native.RegisterTaskCompletionSourceAndReturnId(javaScriptCompletionSource);
 
             var commandText = command + "(" + jsonData +
-                              ", function(data){nativeFunctions.HandleAsyncJavaScriptSuccess('" + callbackId + "', JSON.stringify(data));}" +
-                              ", function(err){nativeFunctions.HandleAsyncJavaScriptError('" + callbackId + "',JSON.stringify(err));}" +
+                              ", function(data){nativeFunctions.HandleAsyncJavaScriptSuccess('" + callbackId + "', JSON.stringify({Data:data}));}" +
+                              ", function(err){nativeFunctions.HandleAsyncJavaScriptError('" + callbackId + "',JSON.stringify({Data:err}));}" +
                               ");";
 
             ExecuteCommand(commandText);
@@ -39,7 +44,8 @@ namespace TheIntegrator._0040_CallbacksIntoDotNet
             try
             {
                 var stringResult = await javaScriptCompletionSource.Task;
-                var data = JsonConvert.DeserializeObject<T>(stringResult);
+                var dataHolder = JsonConvert.DeserializeObject<ResponseHolder>(stringResult);
+                var data = JsonConvert.DeserializeObject<T>(dataHolder.Data);
                 completionSource.SetResult(data);
             }
             catch (Exception ex)

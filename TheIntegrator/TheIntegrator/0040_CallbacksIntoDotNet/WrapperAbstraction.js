@@ -32,10 +32,21 @@ if (!window) {
     platformAbstraction.sendPostRequest = function (url, data, success, failure) {
         var callbackKey = addCallback(success, failure);
         // call into the C#-provided native wrapper
-
         var jsonData = JSON.stringify(data);
-
         nativeFunctions.SendRequest(url, "POST", jsonData, callbackKey);
+    };
+
+    platformAbstraction.sendPutRequest = function (url, data, success, failure) {
+        var callbackKey = addCallback(success, failure);
+        // call into the C#-provided native wrapper
+        var jsonData = JSON.stringify(data);
+        nativeFunctions.SendRequest(url, "PUT", jsonData, callbackKey);
+    };
+    
+    platformAbstraction.sendGetRequest = function (url, success, failure) {
+        var callbackKey = addCallback(success, failure);
+        // call into the C#-provided native wrapper
+        nativeFunctions.SendRequest(url, "GET", null, callbackKey);
     };
 
     window.setTimeout = window.setTimeout || function(func, msec) {
