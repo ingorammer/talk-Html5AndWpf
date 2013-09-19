@@ -11,7 +11,7 @@
         <Button Margin="10,0,10,10" Padding="1,5" Click="SharedValidation_Click">Sharing Validation between C# and JS</Button>
         <Button Margin="10,0,10,10" Padding="1,5" Click="ExtendedValidation_Click">Extended Validation for C# and JS</Button>
         <Button Margin="10,0,10,10" Padding="1,5" Click="CallbackIntoDotNet_Click">Callbacks into .NET</Button>
-        <Button Margin="10,0,10,10" Padding="1,5">Browsercontrol for Simple Interactions</Button>
+        <Button Margin="10,0,10,10" Padding="1,5" Click="SimpleWebBrowserInteractions_Click">Simple Web Browser Interactions</Button>
         <Button Margin="10,0,10,10" Padding="1,5">Exchanging Data with Browser Control</Button>
         <Button Margin="10,0,10,10" Padding="1,5">Embedding Chrome with CefSharp</Button>
         <Button Margin="10,0,10,10" Padding="1,5">Exchanging Data with CefSharp</Button>

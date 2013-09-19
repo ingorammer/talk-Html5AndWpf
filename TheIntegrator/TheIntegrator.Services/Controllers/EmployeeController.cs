@@ -30,7 +30,7 @@ namespace TheIntegrator.Services.Controllers
             }
         }
 
-        public Employee Put(int id, [FromBody]Employee employee)
+        public Employee Put([FromBody]Employee employee)
         {
             _nextId++;
             lock (_dummyData)

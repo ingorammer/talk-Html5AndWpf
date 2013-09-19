@@ -50,5 +50,11 @@ namespace TheIntegrator
             window.Show();
         }
 
+        private void SimpleWebBrowserInteractions_Click(object sender, RoutedEventArgs e)
+        {
+            SimpleWebBrowserInteractionsWindow window = new SimpleWebBrowserInteractionsWindow();
+            window.Show();
+        }
+
     }
 }
