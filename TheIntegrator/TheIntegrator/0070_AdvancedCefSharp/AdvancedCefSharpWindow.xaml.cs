@@ -21,13 +21,12 @@ namespace TheIntegrator
 {
     public partial class AdvancedCefSharpWindow
     {
-
-
         private Employee _emp;
         private List<Action> _queuedInteractions = new List<Action>();
 
         private WebView _webView;
         private bool _loaded = false;
+
 
         public AdvancedCefSharpWindow()
         {
@@ -38,6 +37,7 @@ namespace TheIntegrator
             _webView.RequestHandler = new AdvancedCefSharpRequestHandler();
 
             _webView.LoadCompleted += webView_LoadCompleted;
+            _webView.RegisterJsObject("exposedDemoElements", new ExposedDemoElements());
             webPlaceholder.Children.Add(_webView);
 
             TabPreloader.PreloadTabs(mainTab);

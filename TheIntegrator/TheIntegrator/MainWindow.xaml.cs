@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CefSharp;
+using CefSharp.Wpf;
 
 namespace TheIntegrator
 {
@@ -40,6 +41,14 @@ namespace TheIntegrator
             if (!CEF.Initialize(settings))
             {
                 MessageBox.Show("Could not initialize CEF");
+            }
+            else
+            {
+                var webView = new WebView();
+                webView.Height = 0;
+                webView.Width = 0;
+                mainPanel.Children.Add(webView);
+
             }
         }
 

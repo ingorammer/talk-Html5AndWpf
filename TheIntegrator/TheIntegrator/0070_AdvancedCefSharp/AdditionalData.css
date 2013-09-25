@@ -28,13 +28,20 @@
                 padding-left: 4px;
             }
 
-    input {
+    input, button {
         font-family: "Segoe UI";
         font-size: 16px;
         border: #ABADB3 solid 1px;
         height: 24px;
         padding-left: 2px;
         padding-bottom: 1px;
+    }
+
+    button {
+        padding-top: 0px;
+        padding-bottom: 1px;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
         input:hover {

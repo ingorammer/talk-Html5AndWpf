@@ -111,6 +111,7 @@
     <Compile Include="0070_AdvancedCefSharp\AdvancedCefSharpWindow.xaml.cs">
       <DependentUpon>AdvancedCefSharpWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="0070_AdvancedCefSharp\ExposedDemoElements.cs" />
     <Compile Include="0070_AdvancedCefSharp\TabPreloader.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ScriptHelper.cs" />

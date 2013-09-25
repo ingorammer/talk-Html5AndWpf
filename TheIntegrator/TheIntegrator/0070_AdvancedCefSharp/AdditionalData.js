@@ -10,3 +10,8 @@ function getData() {
     data.HomeEmail = $("#homeEmailInput").val();
     return JSON.stringify(data);
 }
+
+$("#testDataTransfer").click(function () {
+    var response = exposedDemoElements.getData();
+    $("#testData").val(response);
+})

@@ -1,10 +1,10 @@
 ﻿<Window x:Class="TheIntegrator.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="754" Width="518"
+        Title="MainWindow" Height="631" Width="518"
         FontSize="16" >
 
-    <StackPanel Margin="28,37,23,24" Grid.RowSpan="1">
+    <StackPanel Name="mainPanel" Margin="28,37,23,24" Grid.RowSpan="1">
         <Label Margin="0,0,0,10" Content="The Integrator" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" />
 
         <Button Margin="10,30,10,10" Padding="1,5" Click="UsingJavaScriptButton_Click">Using JavaScript from C#</Button>
@@ -14,8 +14,10 @@
         <Button Margin="10,0,10,10" Padding="1,5" Click="SimpleWebBrowserInteractions_Click">Simple Web Browser Interactions</Button>
         <Button Margin="10,0,10,10" Padding="1,5" Click="EmbeddingChromiumButton_Click">Embedding Chromium with CefSharp</Button>
         <Button Margin="10,0,10,10" Padding="1,5" Click="AdvancedCefSharpButton_Click">Advanced CefSharp</Button>
+        <!--
         <Button Margin="10,0,10,10" Padding="1,5">Awesomium - Commercial WebKit Embedding</Button>
         <Button Margin="10,0,10,10" Padding="1,5">Complex UI with AngularJS, Dev Process, Reuse</Button>
+        -->
 
         <TextBlock  Margin="0,30,0,10" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Text="Demos for Integrating JavaScript and HTML5-Techniques with WPF and WinForms Applications" VerticalAlignment="Top"/>
         <TextBlock  Margin="0,0,0,10" HorizontalAlignment="Center"  TextAlignment="Center" TextWrapping="Wrap" Text="Demo code, not production code!" VerticalAlignment="Top" />
